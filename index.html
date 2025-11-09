@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ubaid Ahmad - Web Developer & UI/UX Designer</title>
+    <link rel="icon" href="./assets/webpage-icon.png" />
+    <meta
+      name="description"
+      content="Ubaid Ahmad's professional portfolio showcasing expertise in Web Development (React, Tailwind CSS) and human-centered UI/UX Design. Creating dynamic and scalable digital experiences."
+    />
+    <meta
+      name="keywords"
+      content="Ubaid Ahmad, Web Developer, UI/UX Designer, React.js, Tailwind CSS, Frontend Developer, Portfolio, Freelance"
+    />
+    <meta name="author" content="Ubaid Ahmad" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="page-loader">
+      <div class="loader-spinner"></div>
+      <div class="loader-text">Loading...</div>
+    </div>
+
+    <div class="liquid-bg"></div>
+
+    <header class="glass-header">
+      <div class="container-custom">
+        <div class="header-content">
+          <div class="logo">Ubaid Ahmad</div>
+          <nav class="desktop-nav" aria-label="Main Navigation">
+            <a href="#hero">Home</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#connect">Connect</a>
+          </nav>
+          <div class="header-actions">
+            <button
+              id="mobileMenuBtn"
+              class="mobile-menu-btn"
+              aria-label="Open mobile menu"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div id="mobileMenu" class="mobile-menu">
+      <div class="mobile-menu-content glass-card">
+        <button id="closeMobileMenu" class="close-menu-btn">
+          <i class="fas fa-times"></i>
+        </button>
+        <nav class="mobile-nav" aria-label="Mobile Navigation">
+          <a href="#hero" class="mobile-nav-link">Home</a>
+          <a href="#skills" class="mobile-nav-link">Skills</a>
+          <a href="#experience" class="mobile-nav-link">Experience</a>
+          <a href="#projects" class="mobile-nav-link">Projects</a>
+          <a href="#testimonials" class="mobile-nav-link">Testimonials</a>
+          <a href="#connect" class="mobile-nav-link">Connect</a>
+        </nav>
+      </div>
+    </div>
+
+    <section id="hero" class="hero-section" aria-labelledby="hero-title">
+      <div class="container-custom">
+        <div class="hero-content">
+          <div
+            class="hero-glass-container glass-card animate-on-scroll fade-in"
+          >
+            <div class="profile-image">
+              <img
+                src="./assets/ubaidahmad-img.jpg"
+                alt="Professional photo of Ubaid Ahmad"
+              />
+            </div>
+            <h1 id="hero-title" class="hero-title">Ubaid Ahmad</h1>
+            <h2 class="hero-subtitle">Web Developer + UI/UX Designer</h2>
+            <p class="hero-description">
+              Crafting human-focused, dynamic, and scalable digital experiences
+              that blend design and functionality to deliver impact across every
+              screen and platform.
+            </p>
+            <!-- <button
+              class="cta-button glow-hover"
+              aria-label="Download Curriculum Vitae"
+            >
+              <i class="fas fa-download"></i> Get CV
+            </button> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="counters" class="section" style="padding: 2rem 0">
+      <div class="container-custom">
+        <div class="stats-bar animate-on-scroll fade-in">
+          <div class="stat-item">
+            <h3 id="experienceCount">0</h3>
+            <p>Years Experience</p>
+          </div>
+          <div class="stat-item">
+            <h3 id="projectsCount">0</h3>
+            <p>Projects Completed</p>
+          </div>
+          <div class="stat-item">
+            <h3 id="clientsCount">0</h3>
+            <p>Clients Served</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section" aria-labelledby="skills-title">
+      <div class="container-custom">
+        <h2 id="skills-title" class="section-title">
+          Core Skills & Technologies
+        </h2>
+        <div id="skillsGrid" class="skills-grid"></div>
+      </div>
+    </section>
+
+    <section id="experience" class="section" aria-labelledby="experience-title">
+      <div class="container-custom">
+        <h2 id="experience-title" class="section-title">
+          Professional Experience
+        </h2>
+        <div id="experienceTimeline" class="experience-timeline"></div>
+        <button
+          id="loadMoreExperience"
+          class="load-more-btn glow-hover"
+          style="display: none"
+        >
+          <i class="fas fa-chevron-down"></i> Load More Experience
+        </button>
+      </div>
+    </section>
+
+    <section id="projects" class="section" aria-labelledby="projects-title">
+      <div class="container-custom">
+        <h2 id="projects-title" class="section-title">Featured Projects</h2>
+        <div id="projectsGrid" class="projects-grid"></div>
+      </div>
+    </section>
+
+    <div
+      id="projectModal"
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Project Details"
+    >
+      <div class="modal-content glass-card">
+        <button
+          class="modal-close"
+          id="closeProjectModal"
+          aria-label="Close project modal"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+        <div id="projectModalContent"></div>
+      </div>
+    </div>
+
+    <!-- <section id="clients" class="section" aria-labelledby="clients-title">
+      <div class="container-custom">
+        <h2 id="clients-title" class="section-title">
+          Clients & Collaborations
+        </h2>
+        <div class="clients-carousel glass-card animate-on-scroll slide-up">
+          <div
+            id="clientsTrack"
+            class="clients-track"
+            role="img"
+            aria-label="Clients logos carousel"
+          ></div>
+        </div>
+      </div>
+    </section> -->
+
+    <section
+      id="testimonials"
+      class="section"
+      aria-labelledby="testimonials-title"
+    >
+      <div class="container-custom">
+        <h2 id="testimonials-title" class="section-title">What Clients Say</h2>
+        <div id="testimonialsGrid" class="testimonials-grid"></div>
+      </div>
+    </section>
+
+    <div
+      id="testimonialModal"
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Full Testimonial"
+    >
+      <div class="modal-content glass-card testimonial-modal-content">
+        <button
+          class="modal-close"
+          id="closeTestimonialModal"
+          aria-label="Close testimonial modal"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+        <div id="testimonialModalContent"></div>
+      </div>
+    </div>
+
+    <section id="connect" class="section" aria-labelledby="connect-title">
+      <div class="container-custom">
+        <h2 id="connect-title" class="section-title">Let's Work Together</h2>
+        <p class="connect-description animate-on-scroll fade-in">
+          Ready to bring your ideas to life? Let's collaborate and create
+          something extraordinary.
+        </p>
+        <div class="connect-buttons animate-on-scroll slide-up">
+          <a
+            href="mailto:iubaidahmad303@gmail.com?subject=Portfolio Inquiry&body=Hello, I hope you're doing well. I'm reaching out to learn more about your work. Looking forward to your response."
+            class="connect-btn glass-card glow-hover"
+            aria-label="Email Ubaid Ahmad"
+          >
+            <i class="fas fa-envelope"></i>
+            <span>Email Me</span>
+          </a>
+          <a
+            href="https://wa.me/+923360973607?text=Hello%2C%20I%20hope%20you%27re%20doing%20well.%20I%27m%20reaching%20out%20to%20learn%20more%20about%20your%20work.%20Looking%20forward%20to%20your%20response."
+            target="_blank"
+            class="connect-btn glass-card glow-hover"
+            aria-label="Connect via WhatsApp"
+          >
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="social" class="section" aria-labelledby="social-title">
+      <div class="container-custom">
+        <h2 id="social-title" class="section-title">Find Me Online</h2>
+        <div class="social-icons animate-on-scroll zoom-in">
+          <a
+            href="https://github.com/bugcurator"
+            class="social-icon glass-card glow-hover"
+            target="_blank"
+            data-tooltip="GitHub"
+            aria-label="GitHub profile"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/ubaid-ahmad-07423b2a8"
+            class="social-icon glass-card glow-hover"
+            target="_blank"
+            data-tooltip="LinkedIn"
+            aria-label="LinkedIn profile"
+          >
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a
+            href="https://www.instagram.com/tiredofcaffeine"
+            class="social-icon glass-card glow-hover"
+            target="_blank"
+            data-tooltip="Instagram"
+            aria-label="Instagram profile"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a
+            href="https://www.facebook.com/share/19kVFqjhpN/"
+            class="social-icon glass-card glow-hover"
+            target="_blank"
+            data-tooltip="Facebook"
+            aria-label="Facebook profile"
+          >
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a
+            href="https://www.threads.com/@tiredofcaffeine"
+            class="social-icon glass-card glow-hover"
+            target="_blank"
+            data-tooltip="Threads"
+            aria-label="Threads profile"
+          >
+            <i class="fab fa-threads"></i>
+          </a>
+          <a
+            href="https://discord.com/users/1419554765783961621"
+            class="social-icon glass-card glow-hover"
+            target="_blank"
+            data-tooltip="Discord"
+            aria-label="Discord profile"
+          >
+            <i class="fab fa-discord"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="glass-footer">
+      <div class="container-custom">
+        <div class="footer-content">
+          <p class="footer-text">
+            <i class="fa-regular fa-copyright"></i> 2025 Ubaid Ahmad. All Rights
+            Reserved.
+          </p>
+          <nav class="footer-nav" aria-label="Footer Navigation">
+            <a href="#hero">Home</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#connect">Connect</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
